@@ -2,6 +2,7 @@ package top.heyqing.heyblog.util;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -23,17 +24,18 @@ import javax.mail.internet.MimeMessage;
  */
 @Slf4j
 @Component
-@RequiredArgsConstructor
 public class EmailUtil {
 
     @Value("${spring.mail.username}")
     private String email;
 
 
-    private final JavaMailSender javaMailSender;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
 
-    private final TemplateEngine templateEngine;
+    @Autowired
+    private TemplateEngine templateEngine;
 
     public void sendHtmlMail(EmailDTO emailDTO) {
         try {

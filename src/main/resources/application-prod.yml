@@ -31,8 +31,8 @@ spring:
         max-wait: 10000
 
 #  rabbitmq:
-#    host: rabbitmq的ip
-#    port: 5672
+#    host: 140.143.94.95
+#    port: 5673
 #    username: 账号
 #    password: 密码
 #    listener:
