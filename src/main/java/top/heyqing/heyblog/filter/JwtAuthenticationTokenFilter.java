@@ -1,0 +1,48 @@
+package top.heyqing.heyblog.filter;
+
+import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+import top.heyqing.heyblog.model.dto.UserDetailsDTO;
+import top.heyqing.heyblog.service.TokenService;
+import top.heyqing.heyblog.util.UserUtil;
+
+import javax.servlet.FilterChain;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
+
+/**
+ * ClassName:JwtAuthenticationTokenFilter
+ * Package:top.heyqing.heyblog.filter
+ * Description:
+ *
+ * @Date:2024/12/1
+ * @Author:Heyqing
+ */
+@Component
+@SuppressWarnings("all")
+public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
+
+    @Autowired
+    public TokenService tokenService;
+
+    @Autowired
+    public AuthenticationEntryPoint authenticationEntryPoint;
+
+    @SneakyThrows
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) {
+        UserDetailsDTO userDetailsDTO = tokenService.getUserDetailDTO(request);
+        if (Objects.nonNull(userDetailsDTO) && Objects.isNull(UserUtil.getAuthentication())) {
+            tokenService.renewToken(userDetailsDTO);
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetailsDTO, null, userDetailsDTO.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        }
+        filterChain.doFilter(request, response);
+    }
+}

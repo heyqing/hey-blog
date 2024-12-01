@@ -9,6 +9,7 @@ import eu.bitwalker.useragentutils.OperatingSystem;
 import eu.bitwalker.useragentutils.UserAgent;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import top.heyqing.heyblog.mapper.*;
@@ -41,6 +42,7 @@ import static top.heyqing.heyblog.constants.RedisConstant.*;
  * @Date:2024/11/30
  * @Author:Heyqing
  */
+@Service
 public class HeyBlogInfoServiceImpl implements HeyBlogInfoService {
 
     @Autowired
