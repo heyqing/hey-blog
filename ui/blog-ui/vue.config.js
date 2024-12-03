@@ -9,7 +9,7 @@ module.exports = defineConfig({
   devServer: {
     proxy: {
       '/api': {
-        target: 'https://www.linhaojun.top/api',
+        target: 'http://heyqing.top/api',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

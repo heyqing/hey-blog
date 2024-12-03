@@ -1,113 +1,115 @@
 import axios from 'axios'
 
+const BASE_URL = 'http://localhost:8080/'
+
 export default {
   getTopAndFeaturedArticles: () => {
-    return axios.get('/api/articles/topAndFeatured')
+    return axios.get(`${BASE_URL}articles/topAndFeatured`)
   },
   getArticles: (params: any) => {
-    return axios.get('/api/articles/all', { params: params })
+    return axios.get(`${BASE_URL}articles/all`, { params: params })
   },
   getArticlesByCategoryId: (params: any) => {
-    return axios.get('/api/articles/categoryId', { params: params })
+    return axios.get(`${BASE_URL}articles/categoryId`, { params: params })
   },
   getArticeById: (articleId: any) => {
-    return axios.get('/api/articles/' + articleId)
+    return axios.get(`${BASE_URL}articles/${articleId}`)
   },
   getAllCategories: () => {
-    return axios.get('/api/categories/all')
+    return axios.get(`${BASE_URL}categories/all`)
   },
   getAllTags: () => {
-    return axios.get('/api/tags/all')
+    return axios.get(`${BASE_URL}tags/all`)
   },
   getTopTenTags: () => {
-    return axios.get('/api/tags/topTen')
+    return axios.get(`${BASE_URL}tags/topTen`)
   },
   getArticlesByTagId: (params: any) => {
-    return axios.get('/api/articles/tagId', { params: params })
+    return axios.get(`${BASE_URL}articles/tagId`, { params: params })
   },
   getAllArchives: (params: any) => {
-    return axios.get('/api/archives/all', { params: params })
+    return axios.get(`${BASE_URL}archives/all`, { params: params })
   },
   login: (params: any) => {
-    return axios.post('/api/users/login', params)
+    return axios.post(`${BASE_URL}users/login`, params)
   },
   saveComment: (params: any) => {
-    return axios.post('/api/comments/save', params)
+    return axios.post(`${BASE_URL}comments/save`, params)
   },
   getComments: (params: any) => {
-    return axios.get('/api/comments', { params: params })
+    return axios.get(`${BASE_URL}comments`, { params: params })
   },
   getTopSixComments: () => {
-    return axios.get('/api/comments/topSix')
+    return axios.get(`${BASE_URL}comments/topSix`)
   },
   getAbout: () => {
-    return axios.get('/api/about')
+    return axios.get(`${BASE_URL}about`)
   },
   getFriendLink: () => {
-    return axios.get('/api/links')
+    return axios.get(`${BASE_URL}links`)
   },
   submitUserInfo: (params: any) => {
-    return axios.put('/api/users/info', params)
+    return axios.put(`${BASE_URL}users/info`, params)
   },
   getUserInfoById: (id: any) => {
-    return axios.get('/api/users/info/' + id)
+    return axios.get(`${BASE_URL}users/info/${id}`)
   },
   updateUserSubscribe: (params: any) => {
-    return axios.put('/api/users/subscribe', params)
+    return axios.put(`${BASE_URL}users/subscribe`, params)
   },
   sendValidationCode: (username: any) => {
-    return axios.get('/api/users/code', {
+    return axios.get(`${BASE_URL}users/code`, {
       params: {
         username: username
       }
     })
   },
   bindingEmail: (params: any) => {
-    return axios.put('/api/users/email', params)
+    return axios.put(`${BASE_URL}users/email`, params)
   },
   register: (params: any) => {
-    return axios.post('/api/users/register', params)
+    return axios.post(`${BASE_URL}users/register`, params)
   },
   searchArticles: (params: any) => {
-    return axios.get('/api/articles/search', {
+    return axios.get(`${BASE_URL}articles/search`, {
       params: params
     })
   },
   getAlbums: () => {
-    return axios.get('/api/photos/albums')
+    return axios.get(`${BASE_URL}photos/albums`)
   },
   getPhotosBuAlbumId: (albumId: any, params: any) => {
-    return axios.get('/api/albums/' + albumId + '/photos', {
+    return axios.get(`${BASE_URL}albums/${albumId}/photos`, {
       params: params
     })
   },
   getWebsiteConfig: () => {
-    return axios.get('/api')
+    return axios.get(`${BASE_URL}`)
   },
   qqLogin: (params: any) => {
-    return axios.post('/api/users/oauth/qq', params)
+    return axios.post(`${BASE_URL}users/oauth/qq`, params)
   },
   report: () => {
-    axios.post('/api/report')
+    axios.post(`${BASE_URL}report`)
   },
   getTalks: (params: any) => {
-    return axios.get('/api/talks', {
+    return axios.get(`${BASE_URL}talks`, {
       params: params
     })
   },
   getTalkById: (id: any) => {
-    return axios.get('/api/talks/' + id)
+    return axios.get(`${BASE_URL}talks/${id}`)
   },
   logout: () => {
-    return axios.post('/api/users/logout')
+    return axios.post(`${BASE_URL}users/logout`)
   },
   getRepliesByCommentId: (commentId: any) => {
-    return axios.get(`/api/comments/${commentId}/replies`)
+    return axios.get(`${BASE_URL}comments/${commentId}/replies`)
   },
   updatePassword: (params: any) => {
-    return axios.put('/api/users/password', params)
+    return axios.put(`${BASE_URL}users/password`, params)
   },
   accessArticle: (params: any) => {
-    return axios.post('/api/articles/access', params)
+    return axios.post(`${BASE_URL}articles/access`, params)
   }
 }

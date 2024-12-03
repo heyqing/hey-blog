@@ -14,9 +14,7 @@
             <ob-skeleton v-else height="2.25rem" width="7rem" />
           </h2>
           <span class="h-1 w-14 rounded-full mt-2" :style="gradientBackground" />
-          <p
-            v-if="websiteConfig.authorIntro"
-            class="pt-6 px-10 w-full text-s text-center"
+          <p v-if="websiteConfig.authorIntro" class="pt-6 px-10 w-full text-s text-center"
             v-html="websiteConfig.authorIntro" />
           <p v-else class="pt-6 px-10 w-full text-sm text-center flex flex-col gap-2">
             <ob-skeleton :count="2" height="20px" width="10rem" />
@@ -63,7 +61,7 @@ export default defineComponent({
     const appStore = useAppStore()
     const { t } = useI18n()
     return {
-      default: 'https://static.linhaojun.top/aurora/config/52a81cd2772167b645569342e81ce312.jpg',
+      default: 'https://heyblog.oss-cn-chengdu.aliyuncs.com/myweb/avatar.jpg',
       avatarClass: computed(() => {
         return {
           'ob-avatar': true,

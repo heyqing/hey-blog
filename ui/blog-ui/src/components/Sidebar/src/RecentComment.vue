@@ -5,8 +5,7 @@
       <template v-if="comments.length > 0">
         <li
           class="bg-ob-deep-900 px-2 py-3 mb-1.5 rounded-lg flex flex-row justify-items-center items-center shadow-sm hover:shadow-ob transition-shadow"
-          v-for="comment in comments"
-          :key="comment.id">
+          v-for="comment in comments" :key="comment.id">
           <div class="flex-shrink-0 mr-2">
             <div class="rounded-full ring-gray-100 overflow-hidden shaodw-lg w-9">
               <template v-if="comment.avatar != null">
@@ -70,7 +69,7 @@ export default defineComponent({
     }
     return {
       comments: toRef(commentStore.$state, 'recentComment'),
-      default: 'https://static.linhaojun.top/aurora/config/0af1901da1e64dfb99bb61db21e716c4.jpeg',
+      default: 'https://heyblog.oss-cn-chengdu.aliyuncs.com/myweb/avatar.jpg',
       t
     }
   }
@@ -81,6 +80,7 @@ export default defineComponent({
 .comment {
   width: 70%;
 }
+
 .commentContent {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -88,12 +88,14 @@ export default defineComponent({
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
 .avatar-img {
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 800ms;
   transform: rotate(-360deg);
 }
+
 .avatar-img:hover {
   transform: rotate(360deg);
 }

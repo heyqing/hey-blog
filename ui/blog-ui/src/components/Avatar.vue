@@ -18,7 +18,7 @@ export default defineComponent({
     const appStore = useAppStore()
     return {
       url: toRefs(props).url,
-      default: computed(() => appStore.websiteConfig.touristAvatar || 'https://static.linhaojun.top/aurora/config/52a81cd2772167b645569342e81ce312.jpg')
+      default: computed(() => appStore.websiteConfig.touristAvatar || 'https://heyblog.oss-cn-chengdu.aliyuncs.com/myweb/avatar.jpg')
     }
   }
 })
@@ -30,6 +30,7 @@ export default defineComponent({
   transition-duration: 800ms;
   transform: rotate(-360deg);
 }
+
 .avatar-img:hover {
   transform: rotate(360deg);
 }

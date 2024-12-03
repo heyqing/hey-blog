@@ -49,9 +49,9 @@
       <el-form-item>
         <el-button type="primary" @click="login" size="large" class="mx-auto mt-3">登录</el-button>
       </el-form-item>
-      <el-form-item>
+      <!-- <el-form-item>
         <el-button type="button" class="mx-auto my-el-button" @click="qqLogin">QQ登录</el-button>
-      </el-form-item>
+      </el-form-item> -->
       <div class="mt-8">
         <span class="text" @click="openRegisterDialog">立即注册</span>
         <span class="text float-right" @click="openForgetPasswordDialog">忘记密码?</span>
@@ -279,9 +279,9 @@ export default defineComponent({
       } else {
         window.open(
           'https://graph.qq.com/oauth2.0/show?which=Login&display=pc&client_id=' +
-            +config.qqLogin.QQ_APP_ID +
-            '&response_type=token&scope=all&redirect_uri=' +
-            config.qqLogin.QQ_REDIRECT_URI,
+          +config.qqLogin.QQ_APP_ID +
+          '&response_type=token&scope=all&redirect_uri=' +
+          config.qqLogin.QQ_REDIRECT_URI,
           '_self'
         )
       }
@@ -353,24 +353,30 @@ export default defineComponent({
 .my-el-button {
   width: 300px !important;
 }
+
 .el-button {
   width: 300px;
 }
+
 .el-dialog__headerbtn {
   outline: none !important;
 }
+
 .el-input-group__append {
   background-color: var(--background-primary-alt) !important;
 }
+
 .el-form-item__label {
   text-align: left;
   width: 70px;
   color: var(--text-normal) !important;
 }
+
 .el-input__inner {
   color: var(--text-normal) !important;
   background-color: var(--background-primary-alt) !important;
 }
+
 .el-input__wrapper {
   background: var(--background-primary-alt) !important;
 }
@@ -380,10 +386,12 @@ export default defineComponent({
   color: var(--text-normal);
   cursor: pointer;
 }
+
 #submit-button {
   outline: none;
   background: #0fb6d6;
 }
+
 .header-controls {
   span {
     display: flex;
@@ -393,14 +401,17 @@ export default defineComponent({
     cursor: pointer;
     transition: opacity 250ms ease;
     padding-right: 0.5rem;
+
     &[no-hover-effect] {
       &:hover {
         opacity: 1;
       }
     }
+
     &:hover {
       opacity: 0.5;
     }
+
     .svg-icon {
       stroke: #fff;
       height: 2rem;
@@ -409,40 +420,48 @@ export default defineComponent({
       pointer-events: none;
     }
   }
+
   .search-bar {
     @apply bg-transparent flex flex-row px-0 mr-2 rounded-full;
     opacity: 0;
     width: 0;
     transition: 300ms all ease-out;
+
     &.active {
       @apply bg-ob-deep-800;
       opacity: 0.95;
       width: 200px;
+
       imput {
         width: initial;
       }
     }
+
     &:focus {
       appearance: none;
       outline: none;
     }
+
     input {
       @apply flex flex-1 bg-transparent text-ob-normal px-6 box-border;
       width: 0;
       appearance: none;
       outline: none;
     }
+
     svg {
       @apply float-right;
     }
   }
 }
+
 .avatar-img {
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 800ms;
   transform: rotate(-360deg);
 }
+
 .avatar-img:hover {
   transform: rotate(360deg);
 }

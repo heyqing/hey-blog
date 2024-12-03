@@ -73,11 +73,35 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin()
+//        http.formLogin()
+//                .loginProcessingUrl("/users/login")
+//                .successHandler(authenticationSuccessHandler)
+//                .failureHandler(authenticationFailureHandler);
+//        http.authorizeRequests()
+//                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+//                    @Override
+//                    public <O extends FilterSecurityInterceptor> O postProcess(O fsi) {
+//                        fsi.setSecurityMetadataSource(securityMetadataSource());
+//                        fsi.setAccessDecisionManager(accessDecisionManager());
+//                        return fsi;
+//                    }
+//                })
+//                .anyRequest().permitAll()
+//                .and()
+//                .csrf().disable().exceptionHandling()
+//                .authenticationEntryPoint(authenticationEntryPoint)
+//                .accessDeniedHandler(accessDeniedHandler)
+//                .and()
+//                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        // CORS 配置：允许跨域请求
+        http.cors().and()
+                .formLogin()
                 .loginProcessingUrl("/users/login")
                 .successHandler(authenticationSuccessHandler)
-                .failureHandler(authenticationFailureHandler);
-        http.authorizeRequests()
+                .failureHandler(authenticationFailureHandler)
+                .and()
+                .authorizeRequests()
                 .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                     @Override
                     public <O extends FilterSecurityInterceptor> O postProcess(O fsi) {
@@ -86,14 +110,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         return fsi;
                     }
                 })
-                .anyRequest().permitAll()
+                .anyRequest().permitAll()  // 允许所有请求
                 .and()
-                .csrf().disable().exceptionHandling()
+                .csrf().disable()  // 禁用 CSRF
+                .exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPoint)
                 .accessDeniedHandler(accessDeniedHandler)
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);  // 禁用 session，使用 JWT
+
+        // 在认证过滤器之前添加 JWT 过滤器
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
