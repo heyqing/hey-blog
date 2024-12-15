@@ -7,12 +7,8 @@
         <button id="pick-avatar" @click="showCropper = true">
           <el-avatar :size="110" :src="userInfo.avatar" class="ml-40" />
         </button>
-        <avatar-cropper
-          v-model="showCropper"
-          @uploaded="handleSuccess"
-          trigger="#pick-avatar"
-          :request-options="options"
-          upload-url="/api/users/avatar" />
+        <avatar-cropper v-model="showCropper" @uploaded="handleSuccess" trigger="#pick-avatar"
+          :request-options="options" upload-url="/heyblog/api/users/avatar" />
         <el-form>
           <el-form-item model="userInfo" label="昵称:" class="mt-5">
             <el-input v-model="userInfo.nickname" />
@@ -34,19 +30,10 @@
             </el-input>
           </el-form-item>
           <el-form-item label="订阅:">
-            <el-switch
-              v-model="userInfo.isSubscribe"
-              :loading="loading"
-              :before-change="beforeChange"
-              @change="changeSubscribe"
-              active-color="#0fb6d6"
-              :active-value="1"
-              :inactive-value="0" />
+            <el-switch v-model="userInfo.isSubscribe" :loading="loading" :before-change="beforeChange"
+              @change="changeSubscribe" active-color="#0fb6d6" :active-value="1" :inactive-value="0" />
           </el-form-item>
-          <button
-            @click="commit"
-            type="button"
-            id="submit-button"
+          <button @click="commit" type="button" id="submit-button"
             class="mt-5 w-20 text-white p-2 rounded-lg transition transform hover:scale-105 flex float-right">
             <span class="text-center flex-grow commit">提交</span>
           </button>
@@ -225,10 +212,12 @@ export default defineComponent({
   outline: none;
   background: #0fb6d6;
 }
+
 .text {
   color: var(--text-normal);
   cursor: pointer;
 }
+
 #pick-avatar {
   outline: none;
 }
@@ -239,13 +228,16 @@ export default defineComponent({
   width: 70px;
   color: var(--text-normal) !important;
 }
+
 .el-input__inner {
   color: var(--text-normal) !important;
   background-color: var(--background-primary-alt) !important;
 }
+
 .el-input__wrapper {
   background: var(--background-primary-alt) !important;
 }
+
 .bangding-button {
   outline: none !important;
 }

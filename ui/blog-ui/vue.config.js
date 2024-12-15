@@ -6,6 +6,14 @@ function resolve(dir) {
 module.exports = defineConfig({
   transpileDependencies: true,
   productionSourceMap: false,
+  publicPath: '/blog/',
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': resolve('src')
+      }
+    }
+  },
   devServer: {
     proxy: {
       '/api': {
@@ -14,13 +22,6 @@ module.exports = defineConfig({
         pathRewrite: {
           '^/api': ''
         }
-      }
-    }
-  },
-  configureWebpack: {
-    resolve: {
-      alias: {
-        '@': resolve('src')
       }
     }
   },

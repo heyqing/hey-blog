@@ -104,14 +104,14 @@
           <p>{{ t('settings.no-search-result') }}</p>
         </div>
         <div class="search-footer">
-          <div class="search-logo">
+          <!-- <div class="search-logo">
             <a href="" target="_blank" rel="noopener noreferrer">
               <span class="search-label">{{ t('settings.searched-by') }}</span>
               <img class="mr-1.5" src="https://heyblog.oss-cn-chengdu.aliyuncs.com/myweb/avatar.jpg"
                 alt="ObsidianNext Logo" height="20" width="20" />
               <span class="text-ob">ElasticSearch</span>
             </a>
-          </div>
+          </div> -->
           <ul class="search-commands">
             <li>
               <span class="search-commands-key">

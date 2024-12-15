@@ -41,6 +41,7 @@ export default {
           let param = new URLSearchParams()
           param.append('username', that.loginForm.username)
           param.append('password', that.loginForm.password)
+          console.log(`${baseUrl}/users/login`);
           that.axios.post(`${baseUrl}/users/login`, param).then(({ data }) => {
             if (data.flag) {
               that.$store.commit('login', data.data)

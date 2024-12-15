@@ -6,17 +6,17 @@ function resolve(dir) {
 module.exports = defineConfig({
   transpileDependencies: true,
   productionSourceMap: false,
-  devServer: {
-    proxy: {
-      '/api': {
-        target: 'https://www.heyqing.top/api',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': ''
-        }
-      }
-    }
-  },
+  // devServer: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'http://www.heyqing.top/api',
+  //       changeOrigin: true,
+  //       pathRewrite: {
+  //         '^/api': ''
+  //       }
+  //     }
+  //   }
+  // },
   chainWebpack: (config) => {
     config.resolve.alias.set('@', resolve('src'))
   }
