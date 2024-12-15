@@ -1,1 +1,108 @@
-# config
+server:
+  port: 8080
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://ip:3306/blog?serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: password
+    hikari:
+      minimum-idle: 10
+      idle-timeout: 180000
+      maximum-pool-size: 100
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 60000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+  redis:
+    host: ip
+    port: 6379
+    password: password
+    database: 0
+    lettuce:
+      pool:
+        min-idle: 10
+        max-idle: 100
+        max-active: 100
+        max-wait: 10000
+    timeout: 6000
+
+  rabbitmq:
+    host: ip
+    port: 5672
+    username: name
+    password: password
+    listener:
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 3
+          initial-interval: 3000
+    virtual-host: vhost_name
+  elasticsearch:
+    rest:
+      uris: ip
+
+  mail:
+    host: smtp.163.com
+    username: heyqings@163.com
+    password: password
+    default-encoding: UTF-8
+    protocol: smtps
+    port: 465
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            port: 465
+          ssl:
+            enable: true
+          starttls:
+            enable: true
+            required: true
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+jwt:
+  secret: secret
+
+search:
+  mode: mysql # elasticsearch
+
+upload:
+  mode: oss
+  oss:
+    url: url
+    endpoint: endpoint
+    accessKeyId: accessKeyId
+    accessKeySecret: accessKeySecret
+    bucketName: bucketName
+  minio:
+    url: http://ip:9000/
+    endpoint: http://ip:9000
+    accesskey: accesskey
+    secretKey: secretKey
+    bucketName: bucketName
+
+website:
+  url: url
+
+qq:
+  app-id: id
+  check-token-url: https://graph.qq.com/oauth2.0/me?access_token={access_token}
+  user-info-url: https://graph.qq.com/user/get_user_info?openid={openid}&access_token={access_token}&oauth_consumer_key={oauth_consumer_key}
