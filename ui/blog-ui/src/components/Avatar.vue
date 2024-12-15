@@ -18,7 +18,7 @@ export default defineComponent({
     const appStore = useAppStore()
     return {
       url: toRefs(props).url,
-      default: computed(() => appStore.websiteConfig.touristAvatar || 'https://heyblog.oss-cn-chengdu.aliyuncs.com/myweb/avatar.jpg')
+      default: computed(() => appStore.websiteConfig.touristAvatar || 'https://heyblog.oss-cn-chengdu.aliyuncs.com/heyqing/hey_blog/config/c48b4e5257e1059dfe268f2d0f9d8557.jpg')
     }
   }
 })
